@@ -1,33 +1,32 @@
 using System;
 
-namespace Gherkin.CucumberMessages
+namespace Gherkin.CucumberMessages;
+
+public interface IIdGenerator
 {
-    public interface IIdGenerator
-    {
-        string GetNewId();
-    }
+    string GetNewId();
+}
 
-    public class GuidIdGenerator : IIdGenerator
+public class GuidIdGenerator : IIdGenerator
+{
+    public string GetNewId()
     {
-        public string GetNewId()
-        {
-            return Guid.NewGuid().ToString("N");
-        }
+        return Guid.NewGuid().ToString("N");
     }
+}
 
-    public class IncrementingIdGenerator : IIdGenerator
-    {
-        private int _counter = 0;
+public class IncrementingIdGenerator : IIdGenerator
+{
+    private int _counter = 0;
         
-        public string GetNewId()
-        {
-            var nextId = _counter++;
-            return nextId.ToString();
-        }
+    public string GetNewId()
+    {
+        var nextId = _counter++;
+        return nextId.ToString();
+    }
 
-        public void Reset()
-        {
-            _counter = 0;
-        }
+    public void Reset()
+    {
+        _counter = 0;
     }
 }

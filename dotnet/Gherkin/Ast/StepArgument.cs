@@ -1,7 +1,5 @@
-﻿namespace Gherkin.Ast
+﻿namespace Gherkin.Ast;
+
+public abstract class StepArgument
 {
-    public abstract class StepArgument
-    {
-        
-    }
 }
